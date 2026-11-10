@@ -5,19 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>윤성호 — Backend · LLM Engineer</title>
 <meta name="description" content="LLM 에이전트와 백엔드를 만드는 개발자 윤성호의 포트폴리오">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231f3b2d'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='%23f4f1ea' font-family='sans-serif' font-weight='700'>윤</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231f3b2d'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='%23f1f3f0' font-family='sans-serif' font-weight='700'>윤</text></svg>">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
   :root {
-    --paper: #f4f1ea;
+    --paper: #f1f3f0;
     --ink: #1b1d1a;
     --muted: #5a5e57;
-    --line: #d9d4c7;
+    --line: #d3d8d1;
     --accent: #1f3b2d;
-    --accent-soft: #e3e8df;
+    --accent-soft: #dfe7de;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scrollbar-color: var(--accent) var(--paper); }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li { text-wrap: pretty; }
   body {
     margin: 0;
     background: var(--paper);
@@ -61,11 +64,12 @@
   .project header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
   h3 { font-size: 1.35rem; letter-spacing: -0.02em; margin: 0; font-weight: 700; }
   .meta { color: var(--muted); font-size: 0.92rem; }
-  .summary { margin: 10px 0 16px; max-width: 68ch; }
+  .project-role { margin: 6px 0 0; font-weight: 600; color: var(--accent); font-size: 0.95rem; }
+  .tech { margin: 0 0 16px; color: var(--muted); font-size: 0.9rem; }
+  .summary { margin: 12px 0 16px; max-width: 68ch; }
   .project ul { margin: 0 0 18px; padding-left: 1.1em; max-width: 68ch; }
   .project li { margin: 4px 0; }
   .project li::marker { color: var(--accent); }
-  .project .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
   .repo-links { display: flex; flex-wrap: wrap; gap: 20px; font-weight: 600; font-size: 0.95rem; }
   .repo-links a { color: var(--accent); }
 
@@ -94,6 +98,67 @@
   </aside>
 
   <main>
+
+    <section aria-labelledby="proj-h">
+      <h2 id="proj-h">프로젝트</h2>
+
+      <article class="project">
+        <header>
+          <h3 id="sf">STORYFORK</h3>
+          <span class="meta">SK네트웍스 AI 캠프 최종 프로젝트 · 2026 · 진행 중</span>
+        </header>
+        <p class="project-role">PM · 인프라 · AI</p>
+        <p class="summary">다중 AI 에이전트 기반의 독자 참여형 스토리 창작 플랫폼. 독자가 허용된 원작 회차에서 이야기를 분기(Fork)해 자신만의 전개와 결말을 쓰고, 작가는 세계관·인물을 관리하며 AI와 함께 집필합니다.</p>
+        <ul>
+          <li>캐릭터별 AI가 허용된 기억·정보 범위 안에서 행동하는 다중 인물 시뮬레이션</li>
+          <li>원작과 Fork, 작가 비공개 정보와 인물 지식을 분리하는 데이터 경계 설계</li>
+          <li>Frontend · Core API · AI Service를 분리한 Docker 기반 서비스 구성</li>
+        </ul>
+        <p class="tech">Python · TypeScript · Kotlin · Docker · Multi-Agent</p>
+        <div class="repo-links"><a aria-describedby="sf" href="https://github.com/Seongho-haru/SKN34-FINAL-4TEAM">GitHub 저장소</a></div>
+      </article>
+
+      <article class="project">
+        <header>
+          <h3 id="kbo">KBO 직관 가이드 챗봇</h3>
+          <span class="meta">SK네트웍스 AI 캠프 3·4차 프로젝트 · 2026</span>
+        </header>
+        <p class="project-role">LLM 구조 · 백엔드</p>
+        <p class="summary">KBO 경기·구장·예매 정보를 답하고 직관 코스를 추천하는 LLM 챗봇. 3차에서 데이터 수집 기반을 만들고, 4차에서 LangGraph 멀티 에이전트와 하이브리드 RAG로 고도화했습니다.</p>
+        <ul>
+          <li>LangGraph 실행 구조 설계, 질문 분류에 따른 동적 도구 할당과 하위 에이전트 구성</li>
+          <li>벡터 검색을 pgvector에서 Qdrant로 이전, 단계별 평가셋과 평가 CI 구축</li>
+          <li>채팅 크레딧·후불 정산, 답변 피드백, API 버저닝</li>
+          <li>이미지 질문 처리와 Gemini 기반 하이라이트 영상 검증 등 멀티모달 기능</li>
+        </ul>
+        <p class="tech">Django · LangGraph · Qdrant · PostgreSQL · Next.js · Docker</p>
+        <div class="repo-links">
+          <a aria-describedby="kbo" href="https://github.com/Seongho-haru/SKN34-4th-5Team">4차 저장소</a>
+          <a aria-describedby="kbo" href="https://github.com/Seongho-haru/SKN34-3rd-5Team">3차 저장소</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <header>
+          <h3 id="pbl">PBL 개인 맞춤형 학습 플랫폼</h3>
+          <span class="meta">신한대학교 · 2025.03–2025.11</span>
+        </header>
+        <p class="project-role">팀장 · 백엔드 · AI 데이터 파이프라인</p>
+        <p class="summary">초급 개발자가 강의를 읽으면서 바로 문제를 풀고, 누구나 강의를 만들어 공유할 수 있는 문제 중심(PBL) 학습 플랫폼. 3인 팀을 이끌며 백엔드와 AI 데이터 파이프라인을 맡았습니다.</p>
+        <ul>
+          <li>Spring Boot API 서버, 마크다운 이론 강의와 코딩 문제 강의 통합 관리</li>
+          <li>Judge0 기반 다국어 코드 실행과 테스트케이스 자동 채점</li>
+          <li>O'Reilly 도서·백준 문제 크롤링 → 임베딩 → 벡터 DB 적재 파이프라인(Celery)</li>
+        </ul>
+        <p class="tech">Java 17 · Spring Boot 3.2 · PostgreSQL · Redis · Qdrant · MinIO · Judge0</p>
+        <div class="repo-links">
+          <a aria-describedby="pbl" href="https://youtu.be/fqitJZCgcBY">데모 영상</a>
+          <a aria-describedby="pbl" href="https://github.com/Seongho-haru/PBL-backend">Backend 저장소</a>
+          <a aria-describedby="pbl" href="https://github.com/Seongho-haru/PBL-Ai">AI 파이프라인 저장소</a>
+        </div>
+      </article>
+    </section>
+
     <section aria-labelledby="stack-h">
       <h2 id="stack-h">기술 스택</h2>
       <dl class="stack">
@@ -108,63 +173,6 @@
         <dt>Frontend</dt>
         <dd><span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">React</span></dd>
       </dl>
-    </section>
-
-    <section aria-labelledby="proj-h">
-      <h2 id="proj-h">프로젝트</h2>
-
-      <article class="project">
-        <header>
-          <h3>STORYFORK</h3>
-          <span class="meta">SK네트웍스 AI 캠프 최종 프로젝트 · 2026 · 진행 중</span>
-        </header>
-        <p class="summary">다중 AI 에이전트 기반의 독자 참여형 스토리 창작 플랫폼. 독자가 허용된 원작 회차에서 이야기를 분기(Fork)해 자신만의 전개와 결말을 쓰고, 작가는 세계관·인물을 관리하며 AI와 함께 집필합니다.</p>
-        <ul>
-          <li>캐릭터별 AI가 허용된 기억·정보 범위 안에서 행동하는 다중 인물 시뮬레이션</li>
-          <li>원작과 Fork, 작가 비공개 정보와 인물 지식을 분리하는 데이터 경계 설계</li>
-          <li>Frontend · Core API · AI Service를 분리한 Docker 기반 서비스 구성</li>
-        </ul>
-        <div class="tags"><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">Kotlin</span><span class="tag">Docker</span><span class="tag">Multi-Agent</span></div>
-        <div class="repo-links"><a href="https://github.com/Seongho-haru/SKN34-FINAL-4TEAM">GitHub 저장소</a></div>
-      </article>
-
-      <article class="project">
-        <header>
-          <h3>KBO 직관 가이드 챗봇</h3>
-          <span class="meta">SK네트웍스 AI 캠프 3·4차 프로젝트 · 2026 · LLM 구조 · 백엔드 담당</span>
-        </header>
-        <p class="summary">KBO 경기·구장·예매 정보를 답하고 직관 코스를 추천하는 LLM 챗봇. 3차에서 데이터 수집 기반을 만들고, 4차에서 LangGraph 멀티 에이전트와 하이브리드 RAG로 고도화했습니다.</p>
-        <ul>
-          <li>LangGraph 실행 구조 설계, 질문 분류에 따른 동적 도구 할당과 하위 에이전트 구성</li>
-          <li>벡터 검색을 pgvector에서 Qdrant로 이전, 단계별 평가셋과 평가 CI 구축</li>
-          <li>채팅 크레딧·후불 정산, 답변 피드백, API 버저닝</li>
-          <li>이미지 질문 처리와 Gemini 기반 하이라이트 영상 검증 등 멀티모달 기능</li>
-        </ul>
-        <div class="tags"><span class="tag">Django</span><span class="tag">LangGraph</span><span class="tag">Qdrant</span><span class="tag">PostgreSQL</span><span class="tag">Next.js</span><span class="tag">Docker</span></div>
-        <div class="repo-links">
-          <a href="https://github.com/Seongho-haru/SKN34-4th-5Team">4차 저장소</a>
-          <a href="https://github.com/Seongho-haru/SKN34-3rd-5Team">3차 저장소</a>
-        </div>
-      </article>
-
-      <article class="project">
-        <header>
-          <h3>PBL 개인 맞춤형 학습 플랫폼</h3>
-          <span class="meta">신한대학교 · 2025.03–2025.11 · 팀장 · Backend</span>
-        </header>
-        <p class="summary">초급 개발자가 강의를 읽으면서 바로 문제를 풀고, 누구나 강의를 만들어 공유할 수 있는 문제 중심(PBL) 학습 플랫폼. 3인 팀을 이끌며 백엔드와 AI 데이터 파이프라인을 맡았습니다.</p>
-        <ul>
-          <li>Spring Boot API 서버, 마크다운 이론 강의와 코딩 문제 강의 통합 관리</li>
-          <li>Judge0 기반 다국어 코드 실행과 테스트케이스 자동 채점</li>
-          <li>O'Reilly 도서·백준 문제 크롤링 → 임베딩 → 벡터 DB 적재 파이프라인(Celery)</li>
-        </ul>
-        <div class="tags"><span class="tag">Java 17</span><span class="tag">Spring Boot 3.2</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Qdrant</span><span class="tag">MinIO</span><span class="tag">Judge0</span></div>
-        <div class="repo-links">
-          <a href="https://youtu.be/fqitJZCgcBY">데모 영상</a>
-          <a href="https://github.com/Seongho-haru/PBL-backend">Backend 저장소</a>
-          <a href="https://github.com/Seongho-haru/PBL-Ai">AI 파이프라인 저장소</a>
-        </div>
-      </article>
     </section>
   </main>
 
